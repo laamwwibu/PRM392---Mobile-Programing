@@ -67,7 +67,7 @@
                 android:textColorHint="@color/white_dim" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#4D69A0"
