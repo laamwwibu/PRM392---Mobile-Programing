@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="facebook_language">
+        <item>English</item>
+        <item>Vietnamese</item>
+        <item>Japanese</item>
+    </array>
+</resources>
