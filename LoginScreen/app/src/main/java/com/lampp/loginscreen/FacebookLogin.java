@@ -13,8 +13,12 @@ public class FacebookLogin extends AppCompatActivity {
 
     private Button btnInstagramLogin;
 
+    private Spinner spinner;
+
     private void bindingView() {
         btnInstagramLogin = (Button) findViewById(R.id.buttonInstagramLogin);
+        spinner = findViewById(R.id.languageSpinner);
+
     }
 
     private void bindingAction() {
@@ -26,15 +30,7 @@ public class FacebookLogin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.facebook_login);
-        bindingView();
-        bindingAction();
-
-        Spinner spinner = findViewById(R.id.languageSpinner);
-
+    private void setSpinnerData() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.facebook_language,
@@ -42,5 +38,15 @@ public class FacebookLogin extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.facebook_login);
+        bindingView();
+        bindingAction();
+
+        setSpinnerData();
     }
 }
