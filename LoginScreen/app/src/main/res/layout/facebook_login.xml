@@ -111,11 +111,13 @@
             app:srcCompat="@drawable/icons8_question_24" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="97dp"
             android:layout_marginBottom="20dp"
-            android:gravity="center"
+            android:gravity="center_horizontal|center_vertical"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -125,7 +127,11 @@
             <Spinner
                 android:id="@+id/languageSpinner"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:gravity="end"
+                android:paddingEnd="25dp"
+                android:textAlignment="gravity" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -137,5 +143,15 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/buttonInstagramLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginBottom="21dp"
+        android:text="Instagram"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

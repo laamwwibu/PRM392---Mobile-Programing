@@ -1,17 +1,37 @@
 package com.lampp.loginscreen;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FacebookLogin extends AppCompatActivity {
 
+    private Button btnInstagramLogin;
+
+    private void bindingView() {
+        btnInstagramLogin = (Button) findViewById(R.id.buttonInstagramLogin);
+    }
+
+    private void bindingAction() {
+        btnInstagramLogin.setOnClickListener(this::onBtnInstagramLoginClick);
+    }
+
+    private void onBtnInstagramLoginClick(View view) {
+        Intent intent = new Intent(getApplicationContext(), InstagramLogin.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.facebook_login);
+        bindingView();
+        bindingAction();
 
         Spinner spinner = findViewById(R.id.languageSpinner);
 
