@@ -42,29 +42,13 @@
 
             <EditText
                 android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:fontFamily="@font/montserrat"
-                android:hint="@string/email_or_phone"
-                android:inputType="text"
-                android:textColor="#83F5EFEF"
-                android:textColorHint="@color/white_dim" />
+                style="@style/facebook_form_input"
+                android:hint="@string/email_or_phone" />
 
             <EditText
                 android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:backgroundTint="#FFFFFF"
-                android:ems="10"
-                android:fontFamily="@font/montserrat"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:textColor="#83F5EFEF"
-                android:textColorHint="@color/white_dim" />
+                style="@style/facebook_form_input"
+                android:hint="@string/password" />
 
             <Button
                 android:id="@+id/buttonLogin"
@@ -130,8 +114,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:gravity="end"
-                android:paddingEnd="25dp"
-                android:textAlignment="gravity" />
+                android:paddingEnd="25dp" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -144,13 +127,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonInstagramLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:layout_marginBottom="21dp"
+        android:background="@drawable/gradient_background"
         android:text="Instagram"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

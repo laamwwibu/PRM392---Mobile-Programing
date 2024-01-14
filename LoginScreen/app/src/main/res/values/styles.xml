@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="facebook_form_input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:backgroundTint">#FFFFFF</item>
+        <item name="android:ems">10</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textColor">#83F5EFEF</item>
+        <item name="android:textColorHint">@color/white_dim</item>
+    </style>
+
+    <style name="instagram_form_input">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">#66FFFFFF</item>
+        <item name="android:ems">10</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:inputType">text</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textColor">#83F5EFEF</item>
+        <item name="android:textColorHint">@color/white_dim</item>
+    </style>
+</resources>
