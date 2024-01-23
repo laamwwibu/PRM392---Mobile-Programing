@@ -48,7 +48,8 @@
             <EditText
                 android:id="@+id/password"
                 style="@style/facebook_form_input"
-                android:hint="@string/password" />
+                android:hint="@string/password"
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/buttonLogin"

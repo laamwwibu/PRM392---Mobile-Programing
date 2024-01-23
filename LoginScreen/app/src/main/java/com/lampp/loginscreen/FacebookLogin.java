@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FacebookLogin extends AppCompatActivity {
@@ -19,6 +20,8 @@ public class FacebookLogin extends AppCompatActivity {
     private EditText password;
 
     private Spinner spinner;
+
+    private final int HOME_SCREEN_REQUEST_CODE = 1;
 
     private void bindingView() {
         btnInstagramLogin = (Button) findViewById(R.id.buttonInstagramLogin);
@@ -55,10 +58,32 @@ public class FacebookLogin extends AppCompatActivity {
     private void login() {
         String username = this.username.getText().toString();
         String password = this.password.getText().toString();
-        if(username.equals("admin") && password.equals("123456")) {
+        if (username.equals("admin") && password.equals("123456")) {
             Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show();
+            toHomeScreen(username);
         } else {
             Toast.makeText(this, "Login fail", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void toHomeScreen(String username) {
+        Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+        intent.putExtra("username", username);
+        startActivityForResult(intent, HOME_SCREEN_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case HOME_SCREEN_REQUEST_CODE:
+                if (resultCode == 200) {
+                    String result = data.getStringExtra("result");
+                    Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "LOI ROI " + resultCode, Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
 
