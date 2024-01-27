@@ -1,5 +1,7 @@
 package com.lampp.recyclerview;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -8,23 +10,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class DictionaryRcvAdapter extends RecyclerView.Adapter<DictionaryViewHolder> {
+public class RcvDictionaryAdapter extends RecyclerView.Adapter<WordViewHolder> {
     private List<Word> data;
 
-    public DictionaryRcvAdapter(List<Word> data) {
+    public RcvDictionaryAdapter(List<Word> data) {
         this.data = data;
     }
+
     @NonNull
     @Override
-    public DictionaryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = null;
-        DictionaryViewHolder wordViewHolder = new DictionaryViewHolder(itemView);
-        return null;
+    public WordViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutinflater = LayoutInflater.from(parent.getContext());
+        View itemView = layoutinflater.inflate(R.layout.wird_items_layout, parent, false);
+        return new WordViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DictionaryViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
+        Word word = data.get(position);
+        holder.setData(word);
     }
 
     @Override
