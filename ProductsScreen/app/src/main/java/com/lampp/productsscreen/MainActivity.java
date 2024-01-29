@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,13 +21,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rcvProduct;
     private List<Product> data;
-    private Button btnContextMenu;
 
     private static final int NUMBER_OF_COLUMNS = 3;
 
     private void bindingView() {
         rcvProduct = findViewById(R.id.rcvProduct);
-        btnContextMenu = findViewById(R.id.btnContextMenu);
     }
 
     private void bindingAction() {
@@ -40,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         bindingAction();
         fakeProduct();
         initRcvProduct();
-        registerForContextMenu(btnContextMenu);
+        setActionBar();
+
     }
 
     private void initRcvProduct() {
@@ -79,15 +79,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
-        if(itemId == R.id.optSetting) {
+        if (itemId == R.id.optSetting) {
             Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
         }
-        if(itemId == R.id.optProfile) {
+        if (itemId == R.id.optProfile) {
             Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
         }
-        if(itemId == R.id.optLogout) {
+        if (itemId == R.id.optLogout) {
             Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle("Shop");
+        }
     }
 }

@@ -1,8 +1,9 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.ProductsScreen" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.ProductsScreen" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/main_red</item>
+        <item name="android:homeAsUpIndicator">@drawable/icons8_hamburger_30_white</item>
     </style>
 
     <style name="Theme.ProductsScreen" parent="Base.Theme.ProductsScreen" />
