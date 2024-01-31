@@ -7,24 +7,46 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btnNotify;
+
+    private Button btnSave;
     private EditText edtData;
     private static final String CHANNEL_ID = "SE1715_CHANNEL";
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     private void bindingView() {
         btnNotify = findViewById(R.id.btnNotify);
         edtData = findViewById(R.id.edtData);
+        btnSave = findViewById(R.id.btnSave);
+        sharedPreferences = getSharedPreferences("MY_PREF", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     private void bindingAction() {
         btnNotify.setOnClickListener(this::notify);
+        btnSave.setOnClickListener(this::save);
+    }
+
+    private void save(View view) {
+        String message = edtData.getText().toString();
+        editor.putString("message", message);
+
+        //both are the same, use to save the preference
+//        editor.apply(); // if we dont need to know the result
+//        editor.commit();// if we need to know the result
+        Toast.makeText(this, editor.commit() ? "Saved" : "Fail", Toast.LENGTH_SHORT).show();
+
     }
 
     private void notify(View view) {
@@ -68,11 +90,19 @@ public class MainActivity extends AppCompatActivity {
         bindingView();
         bindingAction();
         onReceiveIntent();
+        onOpenActivity();
     }
 
     private void onReceiveIntent() {
         Intent i = getIntent();
         String message = i.getStringExtra("message");
         edtData.setText(message);
+    }
+
+    private void onOpenActivity() {
+        String message = sharedPreferences.getString("message", null);
+        if (message != null) {
+            edtData.setText(message);
+        }
     }
 }
