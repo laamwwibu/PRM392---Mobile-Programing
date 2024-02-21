@@ -1,31 +1,37 @@
 package com.lampp.productsscreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.lampp.productsscreen.cart.CartActivity;
+import com.lampp.productsscreen.products.dbhelper.ProductsDBHelper;
+import com.lampp.productsscreen.products.Product;
+import com.lampp.productsscreen.products.RcvProductAdapter;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rcvProduct;
     private List<Product> data;
 
+    private ProductsDBHelper productsDBHelper;
+
     private static final int NUMBER_OF_COLUMNS = 3;
 
     private void bindingView() {
         rcvProduct = findViewById(R.id.rcvProduct);
+        productsDBHelper = new ProductsDBHelper(this);
     }
 
     private void bindingAction() {
@@ -37,25 +43,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bindingView();
         bindingAction();
-        fakeProduct();
+
+        setProductsData();
         initRcvProduct();
         setActionBar();
 
     }
 
+    public void setProductsData() {
+        data = productsDBHelper.getAllProducts();
+    }
+
     private void initRcvProduct() {
         rcvProduct.setAdapter(new RcvProductAdapter(data));
         rcvProduct.setLayoutManager(new GridLayoutManager(this, NUMBER_OF_COLUMNS));
-    }
-
-    private void fakeProduct() {
-        data = new ArrayList<>();
-        data.add(new Product("Pharmacy", R.drawable.icons8_pharma_250));
-        data.add(new Product("Registry", R.drawable.icons8_present_250));
-        data.add(new Product("Cartwheel", R.drawable.icons8_cart_240));
-        data.add(new Product("Clothing", R.drawable.icons8_fireman_coat_250));
-        data.add(new Product("Shoes", R.drawable.icons8_shoes_256));
-        data.add(new Product("Accessories", R.drawable.icons8_handbag_250));
     }
 
     @Override
@@ -87,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
         }
         if (itemId == R.id.optLogout) {
             Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+        }
+        if (itemId == R.id.optCart) {
+            Intent intent = new Intent(MainActivity.this, CartActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

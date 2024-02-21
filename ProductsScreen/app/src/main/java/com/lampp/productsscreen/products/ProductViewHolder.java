@@ -1,15 +1,16 @@
-package com.lampp.productsscreen;
+package com.lampp.productsscreen.products;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.lampp.productsscreen.R;
 
 public class ProductViewHolder extends RecyclerView.ViewHolder {
     ImageView imvProductImage;

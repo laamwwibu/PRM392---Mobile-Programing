@@ -1,8 +1,11 @@
-package com.lampp.productsscreen;
+package com.lampp.productsscreen.products;
 
 public class Product {
     private String name;
     private int image;
+
+    public Product() {
+    }
 
     public Product(String name, int image) {
         this.name = name;

@@ -22,7 +22,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProductDetail"
+            android:name=".products.ProductDetail"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".cart.CartActivity"
             android:exported="false">
         </activity>
     </application>
